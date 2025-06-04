@@ -21,7 +21,7 @@ trait Http_Post_Trait {
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer ' . get_option('mw_static_license_key', ""),
             'Email' => get_option('mw_static_email', ""),
-            'Domain' => wp_unslash($_SERVER['HTTP_HOST'])
+            'Domain' => str_replace("www.", "", wp_unslash($_SERVER['HTTP_HOST']))
         ];
         if(!empty($header)){
             $headers = $header;
